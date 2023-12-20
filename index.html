@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ryan's Portfolio Site</title>
+    <style>
+        @font-face {
+            font-family: 'gray';
+            src: url('gray.otf') format('opentype');
+        }
+
+        body {
+            font-family: 'GreycliffCF-DemiBold', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #1592;
+            overflow: hidden;
+            color: white;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #2317a3;
+            color: black;
+        }
+
+        .contact-template,
+        .projects-template,
+        .about-template {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .show-template {
+            opacity: 1;
+        }
+
+        #clickHereButton {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        #shockImage {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            transition: opacity 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">home</a>
+        <a href="#about" onclick="showAbout()">about</a>
+        <a href="#projects" onclick="showProjects()">projects</a>
+        <a href="#contact" onclick="showContact()">contact</a>
+    </div>
+
+    <h1 style="font-family: gray;">welcome to Ryan's portfolio site</h1>
+
+    <button id="clickHereButton">Click Here</button>
+    <img id="shockImage" src="SHOCKINGimage.jpg" alt="Shocked Reaction">
+
+    <div class="projects-template" id="projectsTemplate">
+        <h2 style="font-family: gray;">projects</h2>
+        <!-- Add your project content here -->
+        <p>project 1: bird</p>
+        <p>project 2: d</p>
+        <p>project 3: e</p>
+    </div>
+
+    <div class="contact-template" id="contactTemplate">
+        <h2>Contact Ryan</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+    <div class="about-template" id="aboutTemplate">
+        <h2>about</h2>
+        <!-- About content here -->
+    </div>
+
+    <script>
+        function showContact() {
+            var contactTemplate = document.getElementById("contactTemplate");
+            contactTemplate.style.display = "block";
+            contactTemplate.classList.add("show-template");
+            var projectsTemplate = document.getElementById("projectsTemplate");
+            projectsTemplate.style.display = "none";
+            projectsTemplate.classList.remove("show-template");
+            var aboutTemplate = document.getElementById("aboutTemplate");
+            aboutTemplate.style.display = "none";
+            aboutTemplate.classList.remove("show-template");
+        }
+
+        function showProjects() {
+            var projectsTemplate = document.getElementById("projectsTemplate");
+            projectsTemplate.style.display = "block";
+            projectsTemplate.classList.add("show-template");
+            var contactTemplate = document.getElementById("contactTemplate");
+            contactTemplate.style.display = "none";
+            contactTemplate.classList.remove("show-template");
+            var aboutTemplate = document.getElementById("aboutTemplate");
+            aboutTemplate.style.display = "none";
+            aboutTemplate.classList.remove("show-template");
+        }
+
+        function showAbout() {
+            var aboutTemplate = document.getElementById("aboutTemplate");
+            aboutTemplate.style.display = "block";
+            aboutTemplate.classList.add("show-template");
+            var projectsTemplate = document.getElementById("projectsTemplate");
+            projectsTemplate.style.display = "none";
+            projectsTemplate.classList.remove("show-template");
+            var contactTemplate = document.getElementById("contactTemplate");
+            contactTemplate.style.display = "none";
+            contactTemplate.classList.remove("show-template");
+        }
+
+        // New functionality for fading in the image
+        document.getElementById("clickHereButton").onclick = function() {
+            var shockImage = document.getElementById("shockImage");
+            shockImage.style.display = "block";
+            shockImage.style.opacity = 0;
+            setTimeout(function() {
+                shockImage.style.opacity = 1;
+            }, 100);
+        };
+
+        // New functionality to show message on form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+                alert('Message sent successfully'); // Display the alert message
+            });
+        });
+    </script>
+</body>
+</html>
